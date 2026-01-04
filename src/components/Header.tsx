@@ -58,11 +58,11 @@ export default function Header() {
                   priority
                 />
               </div>
-              <div className="hidden sm:block">
-                <span className="block text-lg font-heading font-bold text-darkgreen">
+              <div>
+                <span className="block text-base sm:text-lg font-heading font-bold text-darkgreen">
                   Chirag Industries
                 </span>
-                <span className="block text-xs text-forest-600">Est. 2002 • Ahmedabad</span>
+                <span className="block text-[10px] sm:text-xs text-forest-600">Est. 2002 • Ahmedabad</span>
               </div>
             </Link>
 
