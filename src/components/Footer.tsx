@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react'
+import { MapPin, Phone, Clock } from 'lucide-react'
 
 const navigation = {
   products: [
@@ -22,33 +22,6 @@ const navigation = {
 export default function Footer() {
   return (
     <footer className="bg-darkgreen text-white">
-      {/* Newsletter Section */}
-      <div className="border-b border-white/10">
-        <div className="section-container py-12">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <div>
-              <h3 className="text-xl font-heading font-semibold mb-2">
-                Stay Updated
-              </h3>
-              <p className="text-forest-200 text-sm">
-                Get the latest updates on new products and industry news.
-              </p>
-            </div>
-            <form className="flex gap-3 w-full lg:w-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 lg:w-72 px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder:text-forest-300 focus:outline-none focus:border-white/40 transition-colors"
-              />
-              <button type="submit" className="btn-secondary whitespace-nowrap">
-                Subscribe
-                <ArrowRight className="h-4 w-4" />
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="section-container py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
@@ -125,14 +98,8 @@ export default function Footer() {
               </li>
               <li className="flex gap-3 text-sm">
                 <Phone className="h-5 w-5 text-forest-400 flex-shrink-0" />
-                <a href="tel:+919876543210" className="text-forest-200 hover:text-white transition-colors">
-                  +91 98765 43210
-                </a>
-              </li>
-              <li className="flex gap-3 text-sm">
-                <Mail className="h-5 w-5 text-forest-400 flex-shrink-0" />
-                <a href="mailto:info@chiragindustries.com" className="text-forest-200 hover:text-white transition-colors">
-                  info@chiragindustries.com
+                <a href="tel:+918511633545" className="text-forest-200 hover:text-white transition-colors">
+                  +91 85116 33545
                 </a>
               </li>
               <li className="flex gap-3 text-sm">

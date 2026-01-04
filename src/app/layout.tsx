@@ -19,13 +19,14 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Chirag Industries - Premium Cookware Handles Manufacturer',
+  title: 'chirag.industries - Premium Cookware Handles Manufacturer',
   description: 'Leading manufacturer of Bakelite Handles, Cookware Handles, Pan Handles, and Kitchen Hardware since 2002. Based in Ahmedabad, Gujarat.',
   keywords: 'bakelite handles, cookware handles, pan handles, kitchen hardware, manufacturer, Ahmedabad, Gujarat, India',
   openGraph: {
-    title: 'Chirag Industries - Premium Cookware Handles Manufacturer',
+    title: 'chirag.industries - Premium Cookware Handles Manufacturer',
     description: 'Leading manufacturer of Bakelite Handles, Cookware Handles, Pan Handles, and Kitchen Hardware since 2002.',
     type: 'website',
+    siteName: 'chirag.industries',
   },
 }
 

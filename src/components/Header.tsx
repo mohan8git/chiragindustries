@@ -4,23 +4,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react'
+import { Menu, X, Phone, Mail } from 'lucide-react'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  {
-    name: 'Products',
-    href: '/products',
-    submenu: [
-      { name: 'Bakelite Handle', href: '/products?category=bakelite' },
-      { name: 'Wire Handle', href: '/products?category=wire' },
-      { name: 'Oval Handle', href: '/products?category=oval' },
-      { name: 'Knob', href: '/products?category=knob' },
-      { name: 'Cooker Handle', href: '/products?category=cooker' },
-      { name: 'Plastic Wire Handle', href: '/products?category=plastic-wire' },
-      { name: 'Flame Guard', href: '/products?category=flameguard' },
-    ],
-  },
+  { name: 'Products', href: '/products' },
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ]
@@ -28,7 +16,6 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -83,44 +70,19 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-1">
               {navigation.map((item) => {
                 const isActive = pathname === item.href || pathname.startsWith(item.href + '?')
-                const hasSubmenu = item.submenu && item.submenu.length > 0
 
                 return (
-                  <div
+                  <Link
                     key={item.name}
-                    className="relative"
-                    onMouseEnter={() => hasSubmenu && setActiveSubmenu(item.name)}
-                    onMouseLeave={() => setActiveSubmenu(null)}
+                    href={item.href}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      isActive
+                        ? 'bg-forest-100 text-darkgreen'
+                        : 'text-charcoal hover:text-darkgreen hover:bg-forest-50'
+                    }`}
                   >
-                    <Link
-                      href={item.href}
-                      className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                        isActive
-                          ? 'bg-forest-100 text-darkgreen'
-                          : 'text-charcoal hover:text-darkgreen hover:bg-forest-50'
-                      }`}
-                    >
-                      {item.name}
-                      {hasSubmenu && <ChevronDown className="h-4 w-4" />}
-                    </Link>
-
-                    {/* Submenu */}
-                    {hasSubmenu && activeSubmenu === item.name && (
-                      <div className="absolute top-full left-0 pt-2 w-56">
-                        <div className="bg-white rounded-xl shadow-card-hover border border-forest-100 py-2 overflow-hidden">
-                          {item.submenu?.map((subitem) => (
-                            <Link
-                              key={subitem.name}
-                              href={subitem.href}
-                              className="block px-4 py-2.5 text-sm text-charcoal hover:bg-forest-50 hover:text-darkgreen transition-colors"
-                            >
-                              {subitem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                    {item.name}
+                  </Link>
                 )
               })}
             </div>
@@ -128,11 +90,11 @@ export default function Header() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-4">
               <a
-                href="tel:+919876543210"
+                href="tel:+918511633545"
                 className="flex items-center gap-2 text-sm text-charcoal hover:text-darkgreen transition-colors"
               >
                 <Phone className="h-4 w-4" />
-                <span>+91 98765 43210</span>
+                <span>+91 85116 33545</span>
               </a>
               <Link href="/contact" className="btn-primary">
                 Get Quote
@@ -165,43 +127,28 @@ export default function Header() {
             {navigation.map((item) => {
               const isActive = pathname === item.href
               return (
-                <div key={item.name}>
-                  <Link
-                    href={item.href}
-                    className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors ${
-                      isActive
-                        ? 'bg-forest-100 text-darkgreen'
-                        : 'text-charcoal hover:bg-forest-50'
-                    }`}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                  {item.submenu && (
-                    <div className="ml-4 mt-1 space-y-1">
-                      {item.submenu.map((subitem) => (
-                        <Link
-                          key={subitem.name}
-                          href={subitem.href}
-                          className="block px-4 py-2 text-sm text-charcoal/70 hover:text-darkgreen transition-colors"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {subitem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`block px-4 py-3 rounded-xl text-base font-medium transition-colors ${
+                    isActive
+                      ? 'bg-forest-100 text-darkgreen'
+                      : 'text-charcoal hover:bg-forest-50'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
               )
             })}
 
             <div className="pt-4 mt-4 border-t border-forest-100 space-y-3">
               <a
-                href="tel:+919876543210"
+                href="tel:+918511633545"
                 className="flex items-center gap-3 px-4 py-2 text-charcoal"
               >
                 <Phone className="h-5 w-5 text-forest-600" />
-                <span>+91 98765 43210</span>
+                <span>+91 85116 33545</span>
               </a>
               <a
                 href="mailto:info@chiragindustries.com"

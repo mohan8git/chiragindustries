@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Shield, Truck, Award, Star, Factory, Users, Flame, Package, BadgeCheck } from 'lucide-react'
+import { ArrowRight, CheckCircle, Shield, Truck, Award, Star, Factory, Users, Package, BadgeCheck, ExternalLink } from 'lucide-react'
 
 const features = [
   {
@@ -205,14 +205,24 @@ export default function Home() {
                   <div className="text-xs text-center text-forest-800 font-medium">Pan-India Delivery</div>
                 </div>
 
-                {/* Animated Product Categories */}
+                {/* Product Categories - Our Range */}
                 <div className="col-span-2 bg-white rounded-2xl p-4 shadow-card overflow-hidden">
                   <div className="text-xs text-charcoal/60 mb-3 font-medium uppercase tracking-wider">Our Range</div>
-                  <div className="flex gap-2 animate-marquee">
-                    {['Bakelite', 'Wire', 'Oval', 'Knob', 'Cooker', 'Plastic Wire', 'Flame Guard'].map((item, i) => (
-                      <span key={i} className="px-3 py-1.5 bg-forest-50 text-forest-700 rounded-full text-sm font-medium whitespace-nowrap border border-forest-100">
-                        {item}
-                      </span>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      { name: 'Bakelite', category: 'bakelite' },
+                      { name: 'Wire', category: 'wire' },
+                      { name: 'Oval', category: 'oval' },
+                      { name: 'Knob', category: 'knob' },
+                      { name: 'Cooker', category: 'cooker' },
+                    ].map((item, i) => (
+                      <Link
+                        key={i}
+                        href={`/products?category=${item.category}`}
+                        className="px-3 py-1.5 bg-forest-50 text-forest-700 rounded-full text-sm font-medium whitespace-nowrap border border-forest-100 hover:bg-forest-100 hover:border-forest-200 transition-colors cursor-pointer"
+                      >
+                        {item.name}
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -223,26 +233,32 @@ export default function Home() {
                   <div className="text-xs text-center text-darkgreen font-semibold">In-House Mfg</div>
                 </div>
 
-                {/* Location Card */}
-                <div className="col-span-2 bg-gradient-to-r from-cream-100 to-cream-200 rounded-2xl p-4 border border-forest-100 hover:border-forest-300 transition-colors">
+                {/* Location Card - Clickable */}
+                <a
+                  href="https://maps.app.goo.gl/LvMG7u6CJtV1Htt6A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="col-span-2 bg-gradient-to-r from-cream-100 to-cream-200 rounded-2xl p-4 border border-forest-100 hover:border-forest-400 hover:shadow-md transition-all cursor-pointer group"
+                >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm">
+                    <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm group-hover:bg-forest-50 transition-colors">
                       <svg className="w-5 h-5 text-forest-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </div>
-                    <div>
-                      <div className="font-heading font-semibold text-darkgreen text-sm">Ahmedabad, Gujarat</div>
-                      <div className="text-xs text-charcoal/60">Kathwada GIDC</div>
+                    <div className="flex-1">
+                      <div className="font-heading font-semibold text-darkgreen text-sm group-hover:text-forest-700 transition-colors">Ahmedabad, Gujarat</div>
+                      <div className="text-xs text-charcoal/60">Victoria Industrial Park, Kathwada GIDC</div>
                     </div>
+                    <ExternalLink className="h-4 w-4 text-charcoal/40 group-hover:text-forest-600 transition-colors" />
                   </div>
-                </div>
+                </a>
 
-                {/* Heat Resistant Badge */}
-                <div className="bg-gradient-to-br from-orange-100 to-orange-50 rounded-2xl p-4 flex flex-col items-center justify-center border border-orange-200 hover:scale-105 transition-transform duration-300">
-                  <Flame className="h-7 w-7 text-orange-500 mb-1" />
-                  <div className="text-xs text-center text-orange-700 font-medium">Heat Resistant</div>
+                {/* Quality Assured Badge */}
+                <div className="bg-gradient-to-br from-forest-100 to-forest-50 rounded-2xl p-4 flex flex-col items-center justify-center border border-forest-200 hover:scale-105 transition-transform duration-300">
+                  <Shield className="h-7 w-7 text-forest-700 mb-1" />
+                  <div className="text-xs text-center text-forest-800 font-medium">Quality Assured</div>
                 </div>
               </div>
             </div>
